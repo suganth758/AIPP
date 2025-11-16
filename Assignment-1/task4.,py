@@ -1,0 +1,26 @@
+def factorial_recursive(n: int) -> int:
+    """Return n! for non-negative integer n using recursion."""
+    if not isinstance(n, int):
+        raise TypeError("n must be an int")
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    if n in (0, 1):
+        return 1
+    return n * factorial_recursive(n - 1)
+
+
+def factorial_iterative(n: int) -> int:
+    """Return n! for non-negative integer n using an iterative loop."""
+    if not isinstance(n, int):
+        raise TypeError("n must be an int")
+    if n < 0:
+        raise ValueError("n must be non-negative")
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+
+if __name__ == "__main__":
+    samples = [0, 1, 2, 5, 10]
+    print({n: (factorial_recursive(n), factorial_iterative(n)) for n in samples})
